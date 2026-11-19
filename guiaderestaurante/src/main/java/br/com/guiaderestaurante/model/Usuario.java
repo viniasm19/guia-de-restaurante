@@ -1,5 +1,7 @@
 package br.com.guiaderestaurante.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,8 +16,10 @@ public class Usuario {
     private String nome;
     @Column(unique = true)
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
     private TipoUsuario tipo;
     private String avatar;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate nascimento;
 }
